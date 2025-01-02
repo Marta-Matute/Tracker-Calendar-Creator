@@ -10,7 +10,7 @@ Flexible Setup: Supports optional sheet name input, with default set to "Sheet1"
 
 ## Usage
 The following link
-https://script.google.com/macros/s/AKfycbzYF6hp83bsjK8u6P6uQXXDg83tkCOTJ0KQQ8cMxESsV-ftUrlaCFfqWZiAqrmpWIiE/exec
+[https://script.google.com/macros/s/AKfycbzYF6hp83bsjK8u6P6uQXXDg83tkCOTJ0KQQ8cMxESsV-ftUrlaCFfqWZiAqrmpWIiE/exec]
 opens the form that will automatically start popuating the sheet.
 Fill out the form in the sidebar with:
 Year: The year for which the calendar should be created.
