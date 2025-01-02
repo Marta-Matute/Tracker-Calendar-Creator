@@ -1,11 +1,55 @@
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 function doGet() {
+  var currentYear = new Date().getFullYear(); // Get the current year
   var html = HtmlService.createHtmlOutput(`
     <!DOCTYPE html>
     <html>
       <head>
-        <title>Workout Calendar Creator</title>
+      <style>
+          body {
+            font-family: 'Arial', sans-serif; /* Modern non-serif font */
+            line-height: 1.6;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+          }
+          h1 {
+            text-align: center;
+            color: #333;
+          }
+          form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          }
+          label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+          }
+          input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px; /* Rounded corners */
+            box-sizing: border-box;
+          }
+          button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+          }
+          button:hover {
+            background-color: #0056b3;
+          }
+        </style>
+        <title>Tracker Calendar Creator</title>
         <script>
           let year, sheetId, goal, sheetName;
 
@@ -31,19 +75,29 @@ function doGet() {
         </script>
       </head>
       <body>
-        <h1>Create Workout Calendar</h1>
-        <p>Enter the year, Sheet ID, and optional Sheet Name to create your workout calendar.</p>
+        <h1>Tracker Calendar</h1>
         <form id="inputForm" onsubmit="event.preventDefault(); handleFormSubmit();">
-          <label for="year">Year:</label><br>
-          <input type="number" id="year" name="year" required><br><br>
           <label for="sheetId">Google Sheet ID:</label><br>
           <input type="text" id="sheetId" name="sheetId" required><br><br>
-          <label for="goal">Days per week:</label><br>
-          <input type="number" id="goal" name="goal" required><br><br>
-          <label for="sheetName">Sheet Name (default: Sheet1):</label><br>
+          <label for="sheetName">Sheet Name:</label><br>
           <input type="text" id="sheetName" name="sheetName" placeholder="Sheet1"><br><br>
+          <label for="year">Year:</label><br>
+          <input type="number" id="year" name="year" min="1900" max="3000" value="${currentYear}" required>
+          <label for="goal">Weekly goal:</label><br>
+          <select id="goal" name="goal" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4" selected>4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select><br><br>
           <button type="submit">Create Calendar</button>
-        </form>
+        </form><br>
+        <form> Hello user! &#128522 This is simple (but effective!) weekly habit tracker. This project started as a personal solution to help me track my workout routine habit. I didn't want to rely on a third party app, so I created a simple spreadsheet to keep everything organized, and after encountering a few bugs and sharing the solution on Reddit, I was amazed by the positive response and the requests for access to the file. This encouraged me to turn my custom code into something more general, allowing others to adapt it to suit their own needs. After discovering Google Apps Script’s ability to create a web app, I decided to share it in this format, making it easy for users to generate a template in their Google Sheets to track their progress.
+
+      I’d love to hear any feedback, bugs, or ideas for improvements! I hope this helps you stay on top of your weekly goals and track your progress!  </form>
       </body>
     </html>
   `);
